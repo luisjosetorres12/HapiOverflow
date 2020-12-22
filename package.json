@@ -1,0 +1,20 @@
+{
+  "name": "Hapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "serve":"nodemon",
+    "lint":"standard",
+    "lint-fix":"standard --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Luis Jose Torres",
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/hapi": "^20.0.3",
+    "nodemon": "^2.0.6",
+    "standard": "^16.0.3"
+  }
+}
