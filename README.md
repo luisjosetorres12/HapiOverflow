@@ -11,4 +11,18 @@ Hi, this is my first project with Hapi,
 
 
 
+### Before to start.
+Before to start the development, you need to run the following commands.
+
+1. npm install (In this projects we're usign hapi, nodemon and standard)
+
+
 ## Our First Server
+>const hapi = require('@hapi/hapi')
+>
+>const server = hapi.server({
+>  port: 3000,
+>  host: 'localhost'
+>})
+
+[Go to file](https://github.com/luisjosetorres12/HapiOverflow/blob/main/index.js)
