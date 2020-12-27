@@ -21,6 +21,13 @@ const init = async () => {
     await server.register(inert)
     await server.register(vision)
 
+    //Definiendo Cookies
+    server.state('user',{
+      ttl:1000 * 60 * 60 * 24,
+      isSecure: process.env.NODE_ENV === 'prod',
+      encoding: 'base64json'
+    })
+
     // Configuracion de Vistas
     server.views({
       engines: {
@@ -39,5 +46,15 @@ const init = async () => {
   }
   console.log('The server is on', server.info.uri)
 }
+
+
+// Manejando Errores no controlados
+process.on('unhandledRejection', error => {
+  console.error('unhandledRejection', error.message, error)
+})
+
+process.on('unhandleException', error => {
+  console.error('unhandleException', error.message, error)
+})
 
 init()
