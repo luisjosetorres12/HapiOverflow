@@ -4,7 +4,7 @@ const path = require('path')
 const handlerbars = require('handlebars')
 const vision = require('vision')
 const routes = require('./routes')
-
+const site = require('./controllers/site')
 const server = hapi.server({
   port: 3000,
   host: 'localhost',
@@ -39,6 +39,7 @@ const init = async () => {
       layoutPath: 'views'
     })
 
+    server.ext('onPreResponse', site.fileNotFound)
     server.route(routes)
     await server.start()
   } catch (error) {

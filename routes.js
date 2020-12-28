@@ -1,6 +1,6 @@
 'use strict'
 const Joi = require('@hapi/joi')
-const { register, home, login, notFound } = require('./controllers/site')
+const { register, home, login, notFound,fileNotFound } = require('./controllers/site')
 const { createUser, validateUser, logout, failValidation } = require('./controllers/user')
 
 const routes = [{
