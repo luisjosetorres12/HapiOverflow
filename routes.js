@@ -1,7 +1,8 @@
 'use strict'
 const Joi = require('@hapi/joi')
-const { register, home, login, notFound,fileNotFound } = require('./controllers/site')
+const { register, home, login, notFound,ask,viewQuestion } = require('./controllers/site')
 const { createUser, validateUser, logout, failValidation } = require('./controllers/user')
+const { createQuestion } = require('./controllers/question')
 
 const routes = [{
   method: 'GET',
@@ -22,6 +23,16 @@ const routes = [{
   method:'GET',
   path: '/logout',
   handler: logout
+},
+{
+  method:'GET',
+  path: '/ask',
+  handler: ask
+},
+{
+  method:'GET',
+  path: '/question/{id}',
+  handler: viewQuestion
 },
 {
   method: 'POST',
@@ -66,7 +77,21 @@ const routes = [{
   method: ['GET','POST'],
   path: '/{any*}',
   handler: notFound
-}
+},
+{
+  method: 'POST',
+  path: '/create-question',
+  handler: createQuestion,
+  options:{
+    validate:{
+      payload: Joi.object({
+        title: Joi.string().required(),
+        description: Joi.string().required()
+      }),
+      failAction: failValidation
+    }
+  }
+},
 
 ]
 

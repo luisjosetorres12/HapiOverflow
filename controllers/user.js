@@ -51,7 +51,8 @@ function logout (req,h) {
 function failValidation (req, h, error) {
   const templates = {
     '/create-user':'register',
-    '/validate-user':'login'
+    '/validate-user':'login',
+    '/create-question':'ask'
   }
   return h.view(templates[req.route.path], {
     title: 'Eror de validacion',
