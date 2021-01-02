@@ -1,10 +1,11 @@
 const hapi = require('@hapi/hapi')
 const inert = require('inert')
 const path = require('path')
-const handlerbars = require('handlebars')
+const handlerbars = require('./lib/helpers')
 const vision = require('vision')
 const routes = require('./routes')
 const site = require('./controllers/site')
+
 const server = hapi.server({
   port: 3000,
   host: 'localhost',

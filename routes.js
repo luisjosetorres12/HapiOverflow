@@ -2,7 +2,7 @@
 const Joi = require('@hapi/joi')
 const { register, home, login, notFound,ask,viewQuestion } = require('./controllers/site')
 const { createUser, validateUser, logout, failValidation } = require('./controllers/user')
-const { createQuestion } = require('./controllers/question')
+const { createQuestion, answerQuestion } = require('./controllers/question')
 
 const routes = [{
   method: 'GET',
@@ -92,7 +92,20 @@ const routes = [{
     }
   }
 },
-
+{
+  method: 'POST',
+  path: '/answer-question',
+  handler: answerQuestion,
+  options:{
+    validate:{
+      payload: Joi.object({
+        answer: Joi.string().required(),
+        id: Joi.string().required()
+      }),
+      failAction: failValidation
+    }
+  }
+},
 ]
 
 module.exports = routes

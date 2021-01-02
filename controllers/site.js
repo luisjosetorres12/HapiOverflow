@@ -14,7 +14,6 @@ async function home (req, h) {
   let data;
   try {
     data = await questions.getLast(10)
-    console.log(data)
   } catch (error) {
     console.error(error)
   }
